@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Home Dashboard</title>
+    <link rel="stylesheet" href="stylesshd.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h1><i class="fas fa-home"></i> Smart Home</h1>
+                <button id="sidebar-toggle-btn" class="sidebar-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            
+            <div class="sidebar-content">
+                <div class="sidebar-section">
+                    <h3>Rooms</h3>
+                    <ul class="room-list">
+                        <li data-room="all" class="active"><i class="fas fa-th-large"></i> All Rooms</li>
+                        <li data-room="living"><i class="fas fa-couch"></i> Living Room</li>
+                        <li data-room="kitchen"><i class="fas fa-utensils"></i> Kitchen</li>
+                        <li data-room="bedroom"><i class="fas fa-bed"></i> Bedroom</li>
+                        <li data-room="bathroom"><i class="fas fa-bath"></i> Bathroom</li>
+                        <li data-room="exterior"><i class="fas fa-door-open"></i> Exterior</li>
+                    </ul>
+                </div>
+                
+                <div class="sidebar-section">
+                    <h3>Categories</h3>
+                    <ul class="category-list">
+                        <li data-category="lights"><i class="fas fa-lightbulb"></i> Lights</li>
+                        <li data-category="climate"><i class="fas fa-temperature-high"></i> Climate</li>
+                        <li data-category="security"><i class="fas fa-shield-alt"></i> Security</li>
+                        <li data-category="cameras"><i class="fas fa-video"></i> Cameras</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="sidebar-footer">
+                <button><i class="fas fa-cog"></i> Settings</button>
+                <button><i class="fas fa-user"></i> Profile</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-left">
+                    <button id="mobile-sidebar-toggle" class="mobile-sidebar-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                    <span class="room-badge" id="current-room">All Rooms</span>
+                </div>
+                <div class="header-right">
+                    <button class="security-status">
+                        <i class="fas fa-shield-alt"></i>
+                        Security Status: <span id="security-status-text">Secure</span>
+                    </button>
+                    <button class="settings-btn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-tabs">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="lights">Lights</button>
+                    <button class="tab-btn" data-tab="climate">Climate</button>
+                    <button class="tab-btn" data-tab="security">Security</button>
+                    <button class="tab-btn" data-tab="cameras">Cameras</button>
+                </div>
+
+                <div class="tab-content">
+                    <!-- Overview Tab -->
+                    <div class="tab-pane active" id="overview">
+                        <div class="cards-grid">
+                            <!-- Lights Overview Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2><i class="fas fa-lightbulb"></i> Lights</h2>
+                                    <p class="card-description" id="lights-overview-status">Loading...</p>
+                                </div>
+                                <div class="card-content" id="lights-overview-content">
+                                    <div class="skeleton-loader"></div>
+                                    <div class="skeleton-loader"></div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline full-width" data-tab-trigger="lights">View All Lights</button>
+                                </div>
+                            </div>
+
+                            <!-- Climate Overview Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2><i class="fas fa-temperature-high"></i> Climate</h2>
+                                    <p class="card-description" id="climate-overview-status">Loading...</p>
+                                </div>
+                                <div class="card-content" id="climate-overview-content">
+                                    <div class="skeleton-loader"></div>
+                                    <div class="skeleton-loader"></div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline full-width" data-tab-trigger="climate">View All Climate Devices</button>
+                                </div>
+                            </div>
+
+                            <!-- Security Overview Card -->
+                            <div class="card">
+                                <div class="card-header">
+                                    <h2><i class="fas fa-shield-alt"></i> Security</h2>
+                                    <p class="card-description" id="security-overview-status">Loading...</p>
+                                </div>
+                                <div class="card-content" id="security-overview-content">
+                                    <div class="skeleton-loader"></div>
+                                    <div class="skeleton-loader"></div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline full-width" data-tab-trigger="security">View All Security Devices</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lights Tab -->
+                    <div class="tab-pane" id="lights">
+                        <h2 class="section-title">Lights</h2>
+                        <div class="cards-grid" id="lights-grid">
+                            <!-- Lights will be dynamically added here -->
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Climate Tab -->
+                    <div class="tab-pane" id="climate">
+                        <h2 class="section-title">Climate Control</h2>
+                        <div class="cards-grid" id="climate-grid">
+                            <!-- Climate devices will be dynamically added here -->
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Tab -->
+                    <div class="tab-pane" id="security">
+                        <h2 class="section-title">Security System</h2>
+                        <div class="cards-grid" id="security-grid">
+                            <!-- Security devices will be dynamically added here -->
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cameras Tab -->
+                    <div class="tab-pane" id="cameras">
+                        <h2 class="section-title">Security Cameras</h2>
+                        <div class="cards-grid" id="cameras-grid">
+                            <!-- Cameras will be dynamically added here -->
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                            <div class="card skeleton-card">
+                                <div class="card-header">
+                                    <div class="skeleton-loader small"></div>
+                                </div>
+                                <div class="card-content">
+                                    <div class="skeleton-loader large"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="scriptshd.js"></script>
+</body>
+</html>
